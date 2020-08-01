@@ -1,23 +1,20 @@
-package com.masuwes.notesapp
+package com.masuwes.consumerapp
 
 import android.content.ContentValues
-import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.masuwes.notesapp.db.DatabaseContract
-import com.masuwes.notesapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
-import com.masuwes.notesapp.db.DatabaseContract.NoteColumns.Companion.DATE
-import com.masuwes.notesapp.db.DatabaseContract.NoteColumns.Companion.DESCRIPTION
-import com.masuwes.notesapp.db.DatabaseContract.NoteColumns.Companion.TITLE
-import com.masuwes.notesapp.db.NoteHelper
-import com.masuwes.notesapp.entity.Note
-import com.masuwes.notesapp.helper.MappingHelper
+import androidx.appcompat.app.AppCompatActivity
+import com.masuwes.consumerapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
+import com.masuwes.consumerapp.db.DatabaseContract.NoteColumns.Companion.DATE
+import com.masuwes.consumerapp.db.DatabaseContract.NoteColumns.Companion.DESCRIPTION
+import com.masuwes.consumerapp.db.DatabaseContract.NoteColumns.Companion.TITLE
+import com.masuwes.consumerapp.entity.Note
+import com.masuwes.consumerapp.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_note_add_update.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -54,7 +51,7 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
 
         if (isEdit) {
             // Uri yang di dapatkan disini akan digunakan untuk ambil data dari provider
-            // content://com.masuwes.notesapp/note/id
+            // content://com.masuwes.consumerapp/note/id
             uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + note?.id)
             val cursor = contentResolver.query(uriWithId, null, null, null, null)
             if (cursor != null) {
